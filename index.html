@@ -9,21 +9,6 @@
     <link href="https://fonts.googleapis.com/css2?family=Hind+Siliguri:wght@400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <script src="https://cdn.tailwindcss.com"></script>
-    <script>
-        tailwind.config = {
-            theme: {
-                extend: {
-                    colors: {
-                        primary: '#1e40af',
-                        secondary: '#3b82f6',
-                        accent: '#f59e0b',
-                        light: '#f0f4f8',
-                        dark: '#1e293b'
-                    }
-                }
-            }
-        }
-    </script>
     <style>
         body {
             font-family: 'Hind Siliguri', sans-serif;
@@ -35,7 +20,7 @@
         .tree-container {
             width: 100%;
             height: 70vh;
-            overflow: hidden;
+            overflow: auto;
             border-radius: 12px;
             box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
             background: white;
@@ -43,10 +28,10 @@
         }
 
         .tree-wrapper {
-            width: 100%;
-            height: 100%;
-            overflow: auto;
+            width: fit-content;
+            height: fit-content;
             padding: 2rem;
+            transform-origin: top left;
             transition: transform 0.2s ease;
         }
 
@@ -361,7 +346,7 @@
     <!-- Family Tree Section -->
     <main class="flex-grow py-6 px-4">
         <div class="max-w-6xl mx-auto">
-            <div class="tree-container">
+            <div class="tree-container" id="treeContainer">
                 <div class="tree-wrapper" id="treeWrapper">
                     <div class="tree">
                         <ul>
@@ -627,6 +612,10 @@
                         <i class="fas fa-plus-circle text-accent mt-1"></i>
                         <span>শাখা প্রসারিত করতে নামের নিচের (+) আইকনে ক্লিক করুন</span>
                     </li>
+                    <li class="flex items-start gap-2">
+                        <i class="fas fa-mobile-alt text-accent mt-1"></i>
+                        <span>একটি শাখা খুললে অন্যরা স্বয়ংক্রিয়ভাবে বন্ধ হবে</span>
+                    </li>
                 </ul>
             </div>
         </div>
@@ -656,6 +645,7 @@
         document.addEventListener('DOMContentLoaded', function () {
             const parents = document.querySelectorAll('.tree li:has(ul)');
             const treeWrapper = document.getElementById('treeWrapper');
+            const treeContainer = document.getElementById('treeContainer');
             const zoomInBtn = document.getElementById('zoomIn');
             const zoomOutBtn = document.getElementById('zoomOut');
             const resetZoomBtn = document.getElementById('resetZoom');
@@ -678,7 +668,7 @@
                     
                     toggle.addEventListener('click', function (event) {
                         event.stopPropagation(); 
-                        parent.classList.toggle('collapsed');
+                        expandNode(parent);
                     });
 
                     // Initially collapse deep nodes
@@ -701,10 +691,31 @@
                 return depth;
             }
 
+            // Expand node with auto-collapse of siblings
+            function expandNode(node) {
+                const wasCollapsed = node.classList.contains('collapsed');
+                
+                // If we're expanding this node
+                if (wasCollapsed) {
+                    // Collapse all siblings at the same level
+                    const parentUl = node.parentElement;
+                    if (parentUl && parentUl.tagName === 'UL') {
+                        const siblings = parentUl.querySelectorAll('> li');
+                        siblings.forEach(sibling => {
+                            if (sibling !== node) {
+                                sibling.classList.add('collapsed');
+                            }
+                        });
+                    }
+                }
+                
+                // Toggle the current node
+                node.classList.toggle('collapsed');
+            }
+
             // Zoom functionality
             function applyZoom() {
                 treeWrapper.style.transform = `scale(${scale})`;
-                treeWrapper.style.transformOrigin = 'top left';
             }
 
             zoomInBtn.addEventListener('click', () => {
@@ -724,6 +735,12 @@
             resetZoomBtn.addEventListener('click', () => {
                 scale = 1;
                 applyZoom();
+                // Center the tree
+                treeContainer.scrollTo({
+                    left: (treeContainer.scrollWidth - treeContainer.clientWidth) / 2,
+                    top: (treeContainer.scrollHeight - treeContainer.clientHeight) / 2,
+                    behavior: 'smooth'
+                });
             });
 
             // Expand/Collapse all functionality
@@ -780,6 +797,11 @@
                     this.classList.add('highlight');
                 });
             });
+
+            // Center the tree on initial load
+            setTimeout(() => {
+                resetZoomBtn.click();
+            }, 300);
         });
     </script>
 </body>
