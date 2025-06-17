@@ -24,39 +24,40 @@
         .header {
             background: rgba(15, 23, 42, 0.8);
             backdrop-filter: blur(10px);
-            padding: 1.5rem 2rem;
+            padding: 1rem;
             text-align: center;
             border-bottom: 2px solid #3b82f6;
             box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
         }
         
         .title {
-            font-size: 2.5rem;
+            font-size: 2rem;
             color: #3b82f6;
             margin-bottom: 0.5rem;
             text-shadow: 0 0 10px rgba(59, 130, 246, 0.5);
         }
         
         .subtitle {
-            font-size: 1.2rem;
+            font-size: 1rem;
             max-width: 900px;
-            margin: 0 auto 1rem;
+            margin: 0 auto 0.5rem;
             color: #cbd5e1;
             line-height: 1.6;
         }
         
         .tagline {
-            font-size: 1.4rem;
+            font-size: 1.2rem;
             color: #f59e0b;
             font-style: italic;
-            margin-bottom: 1rem;
+            margin-bottom: 0.5rem;
         }
         
         .controls {
             display: flex;
             justify-content: center;
-            gap: 15px;
-            padding: 1rem;
+            flex-wrap: wrap;
+            gap: 10px;
+            padding: 0.5rem;
             background: rgba(30, 41, 59, 0.7);
             border-bottom: 1px solid #334155;
         }
@@ -65,13 +66,14 @@
             background: linear-gradient(to bottom, #3b82f6, #2563eb);
             color: white;
             border: none;
-            padding: 10px 20px;
+            padding: 8px 15px;
             border-radius: 50px;
             cursor: pointer;
             font-weight: 600;
             display: flex;
             align-items: center;
-            gap: 8px;
+            gap: 6px;
+            font-size: 0.9rem;
             transition: all 0.3s ease;
             box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
         }
@@ -93,39 +95,40 @@
             display: flex;
             max-width: 1600px;
             margin: 0 auto;
-            padding: 2rem;
+            padding: 1rem;
         }
         
         .tree-container {
             flex: 1;
             background: rgba(15, 23, 42, 0.6);
-            border-radius: 15px;
-            padding: 20px;
+            border-radius: 10px;
+            padding: 10px;
             box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4);
-            height: 70vh;
+            min-height: 60vh;
             overflow: auto;
             border: 1px solid #334155;
         }
         
         #family-tree {
-            max-width: 100%;
+            width: 100%;
             height: auto;
+            min-height: 100%;
         }
         
         .info-panel {
-            width: 300px;
+            width: 250px;
             background: rgba(15, 23, 42, 0.8);
-            border-radius: 15px;
-            padding: 1.5rem;
-            margin-left: 2rem;
+            border-radius: 10px;
+            padding: 1rem;
+            margin-left: 1rem;
             box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4);
             border: 1px solid #334155;
         }
         
         .info-title {
-            font-size: 1.5rem;
+            font-size: 1.3rem;
             color: #3b82f6;
-            margin-bottom: 1.5rem;
+            margin-bottom: 1rem;
             text-align: center;
             border-bottom: 2px solid #3b82f6;
             padding-bottom: 0.5rem;
@@ -133,12 +136,13 @@
         
         .info-content {
             color: #cbd5e1;
-            line-height: 1.7;
+            line-height: 1.6;
+            font-size: 0.9rem;
         }
         
         .info-item {
-            margin-bottom: 1.2rem;
-            padding-bottom: 1.2rem;
+            margin-bottom: 1rem;
+            padding-bottom: 1rem;
             border-bottom: 1px dashed #334155;
         }
         
@@ -152,36 +156,39 @@
             margin-bottom: 0.3rem;
             display: flex;
             align-items: center;
-            gap: 8px;
+            gap: 6px;
+            font-size: 0.95rem;
         }
         
         .legend {
             display: grid;
             grid-template-columns: max-content 1fr;
-            gap: 10px;
-            margin-top: 1.5rem;
+            gap: 8px;
+            margin-top: 1rem;
         }
         
         .legend-item {
             display: flex;
             align-items: center;
-            gap: 8px;
+            gap: 6px;
+            font-size: 0.9rem;
         }
         
         .legend-color {
-            width: 20px;
-            height: 20px;
+            width: 16px;
+            height: 16px;
             border-radius: 50%;
             border: 2px solid white;
         }
         
         .footer {
             text-align: center;
-            padding: 2rem;
+            padding: 1rem;
             color: #94a3b8;
             background: rgba(15, 23, 42, 0.8);
-            margin-top: 2rem;
+            margin-top: 1rem;
             border-top: 1px solid #334155;
+            font-size: 0.9rem;
         }
         
         .node {
@@ -193,12 +200,12 @@
             fill: #3b82f6;
             stroke: white;
             stroke-width: 2px;
-            r: 12;
+            r: 10;
         }
         
         .node text {
             fill: white;
-            font-size: 14px;
+            font-size: 12px;
             font-weight: 500;
             text-shadow: 0 1px 2px rgba(0, 0, 0, 0.8);
         }
@@ -221,7 +228,7 @@
         .generation-0 circle {
             stroke-width: 3px;
             stroke: #f59e0b;
-            r: 18;
+            r: 14;
         }
         
         @media (max-width: 1100px) {
@@ -232,21 +239,87 @@
             .info-panel {
                 width: 100%;
                 margin-left: 0;
-                margin-top: 2rem;
+                margin-top: 1rem;
             }
         }
         
         @media (max-width: 768px) {
+            .header {
+                padding: 0.5rem;
+            }
+            
             .title {
-                font-size: 2rem;
+                font-size: 1.5rem;
             }
             
             .subtitle {
+                font-size: 0.9rem;
+            }
+            
+            .tagline {
                 font-size: 1rem;
             }
             
             .controls {
-                flex-wrap: wrap;
+                gap: 8px;
+                padding: 0.5rem;
+            }
+            
+            .btn {
+                padding: 6px 12px;
+                font-size: 0.8rem;
+            }
+            
+            .tree-container {
+                min-height: 80vh;
+                padding: 5px;
+            }
+            
+            #family-tree {
+                min-height: 400px;
+            }
+            
+            .node circle {
+                r: 8;
+            }
+            
+            .node text {
+                font-size: 10px;
+            }
+            
+            .generation-0 circle {
+                r: 12;
+            }
+            
+            .details {
+                font-size: 9px !important;
+            }
+        }
+        
+        @media (max-width: 480px) {
+            .container {
+                padding: 0.5rem;
+            }
+            
+            .tree-container {
+                min-height: 85vh;
+            }
+            
+            .info-panel {
+                padding: 0.5rem;
+            }
+            
+            .info-title {
+                font-size: 1.1rem;
+            }
+            
+            .info-content {
+                font-size: 0.8rem;
+            }
+            
+            .legend-color {
+                width: 14px;
+                height: 14px;
             }
         }
     </style>
@@ -272,7 +345,7 @@
             <i class="fas fa-plus-circle"></i> সব খুলুন
         </button>
         <button class="btn btn-alt" id="collapseAll">
-            <i " class="fas fa-minus-circle"></i> সব বন্ধ করুন
+            <i class="fas fa-minus-circle"></i> সব বন্ধ করুন
         </button>
     </div>
     
@@ -331,17 +404,16 @@
     <footer class="footer">
         <p>বেপারি পরিবারীয় গঠনতন্ত্রের আলোকে গৃহীত বার্তা | © ২০২৩ বেপারি বংশের গৌরবগাথা</p>
         <p>সোর্স: রফিকুল ইসলাম বকুল | কালেকশন: রনি, জুয়েল, সানি</p>
-        <p style="text-align: center; font-style: italic; margin-top: 40px;">
+        <p style="text-align: center; font-style: italic; margin-top: 20px;">
             যদি উপস্থাপিত তথ্যের মধ্যে কোনো ভুল থাকে, অনুগ্রহ করে ক্ষমাসুলভ দৃষ্টিতে দেখবেন এবং সঠিক তথ্য জানিয়ে পাশে থাকবেন।<br>
             ✉️ যোগাযোগের জন্য: <a href="mailto:sunnyctg09@gmail.com">sunnyctg09@gmail.com</a><br>
             - হাবিব মোহাম্মদ সানি
         </p>
-        
     </footer>
 
     <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
     <script>
-        // Family tree data
+        // Family tree data (unchanged, abbreviated for brevity)
         const treeData = {
             name: "ভুতা",
             generation: 0,
@@ -892,16 +964,19 @@
         };
 
         // Set up the D3 tree
-        const width = document.getElementById('family-tree').parentElement.clientWidth;
-        const margin = {top: 50, right: 120, bottom: 50, left: 120};
-        const dx = 30; // Vertical spacing between nodes
-        const dy = (width - margin.left - margin.right) / (1 + d3.hierarchy(treeData).height); // Horizontal spacing
+        const treeContainer = document.getElementById('family-tree').parentElement;
+        const width = treeContainer.clientWidth;
+        const margin = { top: 30, right: 60, bottom: 30, left: 60 };
+        const isMobile = window.innerWidth <= 768;
+        const dx = isMobile ? 25 : 30; // Smaller vertical spacing on mobile
+        const dy = isMobile ? Math.max(100, (width - margin.left - margin.right) / (2 + d3.hierarchy(treeData).height)) : (width - margin.left - margin.right) / (1 + d3.hierarchy(treeData).height); // Wider horizontal spacing on mobile
         
         // Create SVG container
         const svg = d3.select("#family-tree")
             .attr("width", width)
             .attr("height", dx)
-            .attr("style", "max-width: 100%; height: auto; font: 14px 'Hind Siliguri', sans-serif; user-select: none;");
+            .attr("style", "max-width: 100%; height: auto; font: 14px 'Hind Siliguri', sans-serif; user-select: none;")
+            .attr("preserveAspectRatio", "xMidYMid meet");
         
         // Create groups for links and nodes
         const gLink = svg.append("g")
@@ -972,7 +1047,7 @@
                 if (node.x > right.x) right = node;
             });
             
-            const height = right.x - left.x + margin.top + margin.bottom;
+            const height = Math.max(right.x - left.x + margin.top + margin.bottom, isMobile ? 400 : 600);
             
             // Update SVG attributes
             const transition = svg.transition()
@@ -1011,19 +1086,19 @@
             // Add labels for the nodes
             nodeEnter.append('text')
                 .attr("dy", "0.35em")
-                .attr("x", d => d.children || d._children ? -15 : 15)
+                .attr("x", d => d.children || d._children ? -12 : 12)
                 .attr("text-anchor", d => d.children || d._children ? "end" : "start")
                 .text(d => d.data.name)
                 .style("fill-opacity", 0);
             
             // Add details for the nodes
             nodeEnter.append('text')
-                .attr("dy", "1.5em")
-                .attr("x", d => d.children || d._children ? -15 : 15)
+                .attr("dy", "1.2em")
+                .attr("x", d => d.children || d._children ? -12 : 12)
                 .attr("text-anchor", d => d.children || d._children ? "end" : "start")
                 .text(d => d.data.details || "")
                 .attr("class", "details")
-                .style("font-size", "12px")
+                .style("font-size", isMobile ? "9px" : "12px")
                 .style("fill", "#94a3b8")
                 .style("fill-opacity", 0);
             
@@ -1035,7 +1110,7 @@
             
             // Update the node attributes and style
             nodeUpdate.select('circle')
-                .attr('r', 10)
+                .attr('r', isMobile ? 8 : 10)
                 .style("fill", d => d._children ? "#f59e0b" : d.data.generation === 0 ? "#3b82f6" : "#10b981")
                 .attr('cursor', 'pointer');
             
@@ -1092,7 +1167,7 @@
         
         // Add zooming capability
         const zoom = d3.zoom()
-            .scaleExtent([0.1, 2])
+            .scaleExtent([0.5, 3]) // Allow more zoom on mobile
             .on("zoom", (event) => {
                 gNode.attr("transform", event.transform);
                 gLink.attr("transform", event.transform);
@@ -1101,7 +1176,7 @@
         svg.call(zoom);
         
         // Initialize zoom to center the root node
-        svg.call(zoom.transform, d3.zoomIdentity.translate(width / 4, 0));
+        svg.call(zoom.transform, d3.zoomIdentity.translate(isMobile ? width / 6 : width / 4, margin.top));
         
         // Add zoom controls
         d3.select("#zoomIn").on("click", () => {
@@ -1113,7 +1188,7 @@
         });
         
         d3.select("#resetView").on("click", () => {
-            svg.transition().duration(500).call(zoom.transform, d3.zoomIdentity.translate(width / 4, 0));
+            svg.transition().duration(500).call(zoom.transform, d3.zoomIdentity.translate(isMobile ? width / 6 : width / 4, margin.top));
         });
         
         // Expand all nodes
@@ -1125,6 +1200,15 @@
         // Collapse all nodes
         d3.select("#collapseAll").on("click", () => {
             root.children.forEach(collapse);
+            update(null, root);
+        });
+
+        // Handle window resize
+        window.addEventListener('resize', () => {
+            const newWidth = treeContainer.clientWidth;
+            const newDy = isMobile ? Math.max(100, (newWidth - margin.left - margin.right) / (2 + d3.hierarchy(treeData).height)) : (newWidth - margin.left - margin.right) / (1 + d3.hierarchy(treeData).height);
+            treemap.nodeSize([dx, newDy]);
+            svg.attr("width", newWidth);
             update(null, root);
         });
     </script>
